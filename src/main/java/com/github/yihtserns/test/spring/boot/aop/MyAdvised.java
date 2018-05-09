@@ -3,7 +3,7 @@ package com.github.yihtserns.test.spring.boot.aop;
 /**
  * @author yihtserns
  */
-public class Advised implements Runnable {
+public class MyAdvised implements Runnable {
 
     @Override
     public void run() {

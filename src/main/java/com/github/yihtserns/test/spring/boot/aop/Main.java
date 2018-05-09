@@ -1,5 +1,6 @@
 package com.github.yihtserns.test.spring.boot.aop;
 
+import org.springframework.aop.support.DefaultPointcutAdvisor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -14,13 +15,23 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 public class Main {
 
     @Bean
-    public Advice advice() {
-        return new Advice();
+    public DefaultPointcutAdvisor pointcutAdvisor() {
+        return new DefaultPointcutAdvisor(pointcut(), advice());
     }
 
     @Bean
-    public Advised advised() {
-        return new Advised();
+    public MyPointcut pointcut() {
+        return new MyPointcut();
+    }
+
+    @Bean
+    public MyAdvice advice() {
+        return new MyAdvice();
+    }
+
+    @Bean
+    public MyAdvised advised() {
+        return new MyAdvised();
     }
 
     public static void main(String[] args) {
